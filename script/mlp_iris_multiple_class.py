@@ -64,5 +64,5 @@ print('Test Accuracy: %.3f' % acc)
 # make a prediction
 row = [5.1,3.5,1.4,0.2]
 yhat = model.predict([row])
-prediction = le.classes_[argmax(yhat)]
-print('Predicted: %s (class=%s)' % (yhat, prediction))
+predicted = le.classes_[argmax(yhat)]
+print('Prediction for %S = %s (class = %s)' % (row, yhat, predicted))
