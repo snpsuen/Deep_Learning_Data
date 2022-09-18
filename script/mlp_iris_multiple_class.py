@@ -8,6 +8,7 @@ Original file is located at
 """
 
 # mlp for multiclass classification
+import sys
 from numpy import argmax
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -17,7 +18,8 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 
 # load the dataset
-path = './iris.csv'
+inputfile = sys.argv[1]
+path = f'./{inputfile}'
 df = read_csv(path, header=None)
 
 # split into input and output columns
