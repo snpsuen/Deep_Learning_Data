@@ -17,7 +17,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 
 # load the dataset
-path = 'https://raw.githubusercontent.com/snpsuen/Deep_Learning_Data/main/dataset/iris.csv'
+path = './iris.csv'
 df = read_csv(path, header=None)
 
 # split into input and output columns
