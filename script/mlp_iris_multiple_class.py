@@ -66,3 +66,7 @@ row = [5.1,3.5,1.4,0.2]
 yhat = model.predict([row])
 predicted = le.classes_[argmax(yhat)]
 print('Prediction for %S = %s (class = %s)' % (row, yhat, predicted))
+
+# save the model
+model.save("./mlp_iris_multiple_class_model")
+print('Model saved as rnmlp_iris_multiple_class_model')
