@@ -1,31 +1,19 @@
 import tensorflow as tf
-import pickle
+import cv2
 from tensorflow import keras
 from numpy import asarray, argmax
-from flask import Flask, render_template, request, url_for
 
-app = Flask(__name__)
-model = tf.keras.models.load_model("./mlp_iris_multiple_class_model")
-fd = open('./mlp_iris_encoder.pkl', 'rb')
-le = pickle.load(fd) 
-fd.close()
+model = tf.keras.models.load_model("./cnn_fashion_class_model")
+img = cv2.imread('./1042.png', cv2.IMREAD_GRAYSCALE)
+print("img.shape = %s" % (img.shape))
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+imgsize = 28
+img = tf.expand_dims(img, -1)
+img = tf.divide(img, 255)
+img = tf.image.resize(img, [imgsize, imgsize])
+img = tf.reshape(img, [1, img_size, img_size, 1])
+print("After preprossing, img.shape = %s" % (img.shape))
 
-@app.route('/mlp_iris_index')
-def mlp_iris_home():
-    return render_template('mlp_iris_index.html')
-
-@app.route('/mlp_iris_prediction', methods=['GET', 'POST'])
-def mlp_iris_prediction():
-  if request.method == 'POST':
-    characteristics=[]
-    for label in ["sepallength", "sepalwidth", "petallength", "petalwidth"]:
-      feature = float(request.form.get(label))
-      characteristics.append(feature)
-
-    yhat = model.predict([characteristics])
-    classhat = le.inverse_transform([argmax(yhat)])
-    return render_template('mlp_iris_result.html', features=characteristics, predictprob=yhat, predictclass=classhat)
+classnames = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+yhat = model.predict(img)
+print('Predicted class for 1024.png = %s' % classnames[argmax(yhat)])
