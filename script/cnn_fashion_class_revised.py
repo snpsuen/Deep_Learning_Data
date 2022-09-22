@@ -78,12 +78,12 @@ loss, acc = model.evaluate(test_images, test_labels, verbose=0)
 print('Accuracy: %.3f' % acc)
 
 # make a prediction
-image = test_images[100]
+image = test_images[202]
 yhat = model.predict(asarray([image]))
 print('Predicted: class = %s' % class_names[argmax(yhat)])
 
 # actual classification of test image
 pyplot.figure()
-pyplot.imshow(test_images[100].squeeze())
-pyplot.xlabel(class_names[test_labels[100]])
+pyplot.imshow(test_images[202].squeeze())
+pyplot.xlabel(class_names[test_labels[202]])
 pyplot.show()
