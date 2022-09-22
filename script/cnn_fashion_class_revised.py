@@ -88,5 +88,5 @@ pyplot.xlabel(class_names[test_labels[202]])
 pyplot.show()
 
 # save the model
-model.save("./cnn_fashion_model")
-print('Model saved as cnn_fashion_model')
+model.save("./cnn_fashion_class_model")
+print('Model saved as cnn_fashion_class_model')
