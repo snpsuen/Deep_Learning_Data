@@ -26,8 +26,7 @@ from tensorflow.keras.layers import Dropout
 print('Train: train_images.shape = %s, train_labels.shape = %s' % (train_images.shape, train_labels.shape))
 print('Test: test_images.shape = %s, test_labels.shape = %s' % (test_images.shape, test_labels.shape))
 
-class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
-               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
 # plot first few images
 pyplot.figure(figsize=(10,10))
@@ -87,3 +86,7 @@ pyplot.figure()
 pyplot.imshow(test_images[202].squeeze())
 pyplot.xlabel(class_names[test_labels[202]])
 pyplot.show()
+
+# save the model
+model.save("./cnn_fashion_model")
+print('Model saved as cnn_fashion_model')
