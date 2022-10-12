@@ -30,7 +30,6 @@ spec:
         hostPath:
            path: /var/tmp/jovyan/data
            type: DirectoryOrCreate
-
 ---
 apiVersion: v1
 kind: Service
