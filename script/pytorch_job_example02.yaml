@@ -1,0 +1,19 @@
+apiVersion: "kubeflow.org/v1"
+kind: PyTorchJob
+metadata:
+  name: pytorch-job-example02
+  namespace: kubeflow
+spec:
+  pytorchReplicaSpecs:
+    Worker:
+      replicas: 1
+      restartPolicy: OnFailure
+      template:
+        spec:
+          containers:
+            - name: pytorch
+              image: snpsuen/pytorch_rnn_airpass:02
+              imagePullPolicy: Always
+              command:
+                - "python3"
+                - "/workspace/pytorch_rnn_airpass_example02.py"
