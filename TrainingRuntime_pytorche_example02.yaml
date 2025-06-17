@@ -1,0 +1,39 @@
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: TrainingRuntime
+metadata:
+  name: pytorch-example02-runtime
+  namespace: default # Or the namespace where your runtime will live
+spec:
+  jobType: PyTorch # This specifies that this runtime is for PyTorch jobs
+  # Optional: Default resources for this runtime.
+  # Can be overridden by TrainJob.
+  # worker:
+  #   replicas: 1 # Default worker replicas
+  #   resources:
+  #     requests:
+  #       cpu: "1"
+  #       memory: "2Gi"
+  #     limits:
+  #       cpu: "2"
+  #       memory: "4Gi"
+  # master:
+  #   replicas: 1 # Default master replicas
+  #   resources:
+  #     requests:
+  #       cpu: "1"
+  #       memory: "2Gi"
+  #     limits:
+  #       cpu: "2"
+  #       memory: "4Gi"
+  podTemplate: # This is a base pod template that applies to all replicas for this runtime
+    spec:
+      containers:
+        - name: pytorch-example02-container # Generic name for the container
+          image: snpsuen/pytorch_rnn_airpass:02 # Base image
+  # This section defines how the command and arguments are constructed
+  # based on the roles (master/worker) and distributed training environment.
+  # This is a key difference from V1.
+  elasticPolicy:
+    minReplicas: 1
+    maxReplicas: 5 # Example: Allow elastic scaling up to 5 replicas
+    rdzvBackend: c10d # Or etcd, depending on your setup
