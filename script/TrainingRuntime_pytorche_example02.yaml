@@ -30,6 +30,16 @@ spec:
       containers:
         - name: pytorch-example02-container # Generic name for the container
           image: snpsuen/pytorch_rnn_airpass:02 # Base image
+          # Common volume mounts and volumes for PyTorch distributed training
+          # volumeMounts:
+          #  - name: dshm
+          #    mountPath: /dev/shm
+      # volumes:
+      #  - emptyDir:
+      #      medium: Memory
+      #    name: dshm
+      # imagePullSecrets:
+      #  - name: regcred # Assuming you have this secret for your image pull          
   # This section defines how the command and arguments are constructed
   # based on the roles (master/worker) and distributed training environment.
   # This is a key difference from V1.
