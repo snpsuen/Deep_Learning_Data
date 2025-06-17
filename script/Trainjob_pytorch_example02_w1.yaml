@@ -1,0 +1,14 @@
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: TrainJob
+metadata:
+  name: pytorch-example02-w1
+  namespace: default
+spec:
+  trainingRuntime:
+    name: pytorch-example02-runtime # Still reference this, as it defines the base image, volumes, etc.
+  worker: # Only define the worker role
+    replicas: 1
+  # The command for a single worker doesn't need torch.distributed.run
+  command:
+    - python
+    - /workspace/pytorch_rnn_airpass_example02.py # Your training script without distributed launch/run
