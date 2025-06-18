@@ -26,7 +26,7 @@ spec:
                     - command:
                         - "python"
                         - "/workspace/pytorch_rnn_airpass_example02.py"
-                      image: snpsuen/pytorch_rnn_airpass:02
+                      image: snpsuen/pytorch_rnn_airpass:03
                       imagePullPolicy: Always
                       name: pyrt-simple-container
 ---
