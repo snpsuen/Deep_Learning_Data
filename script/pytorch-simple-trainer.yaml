@@ -2,12 +2,12 @@ apiVersion: trainer.kubeflow.org/v1alpha1
 kind: TrainingRuntime
 metadata:
   name: pytorch-simple-runtime
-  namespace: default # Or the namespace where your runtime will live
+  namespace: training # Or the namespace where your runtime will live
 spec:
   template:
     metadata:
       name: pyrt-simple
-      namespace: default
+      namespace: training
     spec:
       replicatedJobs:
         - name: pyrt-rj
@@ -15,12 +15,12 @@ spec:
           template:
             metadata:
               name: pyrt-rj-simple
-              namespace: default
+              namespace: training
             spec:
               template:
                 metadata: 
                   name: pyrt-simple-pod
-                  namespace: default
+                  namespace: training
                 spec:
                   containers:
                     - command:
@@ -34,7 +34,7 @@ apiVersion: trainer.kubeflow.org/v1alpha1
 kind: TrainJob
 metadata:
   name: pytorch-simple-trainjob
-  namespace: default # Or the namespace where your runtime will live
+  namespace: training # Or the namespace where your runtime will live
 spec:
   runtimeRef:
     kind: TrainingRuntime
