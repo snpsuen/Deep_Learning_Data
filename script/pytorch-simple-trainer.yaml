@@ -1,3 +1,4 @@
+
 apiVersion: trainer.kubeflow.org/v1alpha1
 kind: TrainingRuntime
 metadata:
@@ -29,3 +30,13 @@ spec:
                       image: snpsuen/pytorch_rnn_airpass:04
                       imagePullPolicy: Always
                       name: pyrt-simple-container
+---
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: TrainJob
+metadata:
+  name: pytorch-simple-trainjob
+  namespace: training # Or the namespace where your runtime will live
+spec:
+  runtimeRef:
+    kind: TrainingRuntime
+    name: pytorch-simple-runtime
