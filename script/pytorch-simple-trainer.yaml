@@ -26,8 +26,8 @@ spec:
                   containers:
                     - command:
                         - "python"
-                        - "/workspace/pytorch_rnn_airpass_example04.py"
-                      image: snpsuen/pytorch_rnn_airpass:04
+                        - "/workspace/pytorch_rnn_airpass_example05.py"
+                      image: snpsuen/pytorch_rnn_airpass:05
                       imagePullPolicy: Always
                       name: pyrt-simple-container
 ---
