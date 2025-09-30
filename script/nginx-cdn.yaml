@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: nginx-cdn
-          image: snpsuen/nginx-cdn:v01
+          image: snpsuen/nginx-cdn:v02
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
