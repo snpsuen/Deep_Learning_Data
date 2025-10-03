@@ -4,14 +4,13 @@ set -e
 # Step 2: Wait for external hostname
 while true
 do
-  echo "Enter the URL host of the VOD streaming service exposed by Killerkoda to the Internet:  "
+  echo "Killercoda service URL exposed to the Internet:  "
   read HOST
   if [[ -n "$HOST" ]]
   then
     echo "Backend hostname: $HOST"
     break
   fi
-  sleep 1
 done
 
 # Step 3: Deploy frontend reverse proxy
